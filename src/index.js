@@ -170,6 +170,8 @@ function execCallback(req, res) {
   let explorationLevel = args.explore;
   let osrmSnappingRadius = args.osrmsnappingradius
 
+  console.log(`osrmsnappingradius : ${osrmSnappingRadius}`)
+
   const reqOptions = req.body.options;
   if (reqOptions) {
     // Optionally override defaults.
@@ -223,6 +225,8 @@ function execCallback(req, res) {
   if (osrmSnappingRadius) {
     options.push('-s', osrmSnappingRadius);
   }
+
+  console.log(`Options: ${options}`)
 
   const timestamp = Math.floor(Date.now() / 1000); //eslint-disable-line
   const fileName = path.join(

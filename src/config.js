@@ -46,7 +46,7 @@ const cliArgs = minimist(process.argv.slice(2), {
     planmode: config_yml.cliArgs.planmode, // set plan mode (-c)
     port: config_yml.cliArgs.port, // expressjs port
     router: router, // routing backend
-    osrmsnappingradius: config_yml.cliArgs.osrmsnapradius, // OSRM snapping radius in meters
+    osrmsnappingradius: config_yml.cliArgs.osrmsnappingradius, // OSRM snapping radius in meters
     threads: config_yml.cliArgs.threads, // number of threads to use (-t)
     timeout: config_yml.cliArgs.timeout, // milli-seconds.
   },
