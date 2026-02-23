@@ -163,17 +163,12 @@ const allowedOverrides = new Set(
 function execCallback(req, res) {
   const options = defaultOptions.slice();
 
-  console.log('full args object:', JSON.stringify(args, null, 2));
-
   // Default command-line values.
   let planMode = args.planmode;
   let geometry = args.geometry;
   let nbThreads = args.threads;
   let explorationLevel = args.explore;
   let osrmSnappingRadius = args.osrmsnappingradius
-
-  console.log(`osrmsnappingradius : ${osrmSnappingRadius}`)
-  console.log(`args osrmsnappingradius : ${args.osrmsnappingradius}`)
 
   const reqOptions = req.body.options;
   if (reqOptions) {
@@ -228,8 +223,6 @@ function execCallback(req, res) {
   if (osrmSnappingRadius) {
     options.push('-s', osrmSnappingRadius);
   }
-
-  console.log(`Options: ${options}`)
 
   const timestamp = Math.floor(Date.now() / 1000); //eslint-disable-line
   const fileName = path.join(
