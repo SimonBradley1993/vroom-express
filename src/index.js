@@ -163,6 +163,8 @@ const allowedOverrides = new Set(
 function execCallback(req, res) {
   const options = defaultOptions.slice();
 
+  console.log('full args object:', JSON.stringify(args, null, 2));
+
   // Default command-line values.
   let planMode = args.planmode;
   let geometry = args.geometry;
@@ -171,6 +173,7 @@ function execCallback(req, res) {
   let osrmSnappingRadius = args.osrmsnappingradius
 
   console.log(`osrmsnappingradius : ${osrmSnappingRadius}`)
+  console.log(`args osrmsnappingradius : ${args.osrmsnappingradius}`)
 
   const reqOptions = req.body.options;
   if (reqOptions) {
