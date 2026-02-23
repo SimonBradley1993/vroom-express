@@ -12,7 +12,7 @@ cliArgs:
   path: '' # VROOM path (if not in $PATH)
   port: 3000 # expressjs port
   router: 'osrm' # routing backend (osrm, libosrm, ors, or valhalla)
-  osrmsnapradius: 5000
+  osrmsnappingradius: 5000
   timeout: 300000 # milli-seconds
   baseurl: '/' # base url for api
 routingServers:

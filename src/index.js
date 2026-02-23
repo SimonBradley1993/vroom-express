@@ -206,7 +206,7 @@ function execCallback(req, res) {
       options.push('-l', reqOptions.l);
     }
 
-    if (allowedOverrides.has('s') && typeof reqOptions.x === 'number') {
+    if (allowedOverrides.has('s') && typeof reqOptions.s === 'number') {
       osrmSnappingRadius = reqOptions.s;
     }
   }
