@@ -154,7 +154,7 @@ if (args.router !== 'libosrm') {
 }
 
 if (args.override === true) {
-  args.override = ['c', 'g', 'l', 't', 'x'];
+  args.override = ['c', 'g', 'l', 't', 'x', 's'];
 }
 const allowedOverrides = new Set(
   Array.isArray(args.override) ? args.override : []
@@ -168,6 +168,7 @@ function execCallback(req, res) {
   let geometry = args.geometry;
   let nbThreads = args.threads;
   let explorationLevel = args.explore;
+  let osrmSnappingRadius = args.osrmsnappingradius
 
   const reqOptions = req.body.options;
   if (reqOptions) {
@@ -204,6 +205,10 @@ function execCallback(req, res) {
     if (allowedOverrides.has('l') && typeof reqOptions.l === 'number') {
       options.push('-l', reqOptions.l);
     }
+
+    if (allowedOverrides.has('s') && typeof reqOptions.x === 'number') {
+      osrmSnappingRadius = reqOptions.s;
+    }
   }
 
   if (planMode) {
@@ -214,6 +219,10 @@ function execCallback(req, res) {
   }
   options.push('-t', nbThreads);
   options.push('-x', explorationLevel);
+
+  if (osrmSnappingRadius) {
+    options.push('-s', osrmSnappingRadius);
+  }
 
   const timestamp = Math.floor(Date.now() / 1000); //eslint-disable-line
   const fileName = path.join(
